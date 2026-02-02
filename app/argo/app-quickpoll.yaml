@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quickpoll
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/<YOUR_GITHUB_USERNAME>/QuickPoll.git
+    targetRevision: main               # or your branch name
+    path: app/k8s/base                 # Kustomize base path
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: quickpoll               # target ns (also created by kustomize)
+  syncPolicy:
+    automated:
+      prune: true                      # delete resources removed from Git
+      selfHeal: true                   # revert drift in cluster
+    syncOptions:
+      - CreateNamespace=true           # allow creating ns if missing
+      # Optional: If you use emptyDir and don't want pruning to fail:
+      # - PrunePropagationPolicy=foreground
+      # - ApplyOutOfSyncOnly=true

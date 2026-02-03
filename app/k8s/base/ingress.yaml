@@ -2,8 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: quickpoll
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  namespace: quickpoll
 spec:
   ingressClassName: nginx
   rules:

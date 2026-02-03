@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<YOUR_GITHUB_USERNAME>/QuickPoll.git
+    repoURL: https://github.com/PsychCodez/QuickPoll.git
     targetRevision: main               # or your branch name
     path: app/k8s/base                 # Kustomize base path
   destination:

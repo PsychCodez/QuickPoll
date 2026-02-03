@@ -1,4 +1,5 @@
 resources:
+  - namespace.yaml
   - api.yaml
   - web.yaml
   - ingress.yaml
